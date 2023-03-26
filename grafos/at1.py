@@ -2,7 +2,7 @@ import numpy as np
 import sys
 
 
-path = '/home/merlin/study/Faculdade/grafos/Instancias/' 
+path = '../grafos/Instancias/' 
 
 
 if __name__ == "__main__":
@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
      Parameters
      ------------------
-     [1]InstanceName, [2]InstanceID
+     [1]InstanceName
     """
     InstanceName = str(sys.argv[1])
 
