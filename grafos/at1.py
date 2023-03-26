@@ -13,10 +13,10 @@ if __name__ == "__main__":
      ------------------
      [1]InstanceName, [2]InstanceID
     """
-    InstanceName, InstanceID = str(sys.argv[1]), str(sys.argv[2])
+    InstanceName = str(sys.argv[1])
 
 
-def createDefaultMatrix(inst, id):
+def createDefaultMatrix(inst):
     """
     Read a text instance, transform it in a ndarray and return
     the ndarray
@@ -26,11 +26,10 @@ def createDefaultMatrix(inst, id):
     inst (Name's Instance)
     id   (Id's Instance)
     """
-    pathFile = path + inst + id + '.txt'
+    pathFile = path + inst + '.txt'
 
     with open(pathFile, 'rb') as f:
-        nrows, ncols = [int(field) for field in f.readline().split()]
-        data = np.genfromtxt(f, dtype='int32', max_rows=nrows)
+        data = np.genfromtxt(f, dtype='int32')
 
     return data
 
@@ -51,8 +50,12 @@ def saveMatrixFile(InstanceName, data):
     file.write(InstanceName + ' ' + str(data.shape[0]) + ' ' + str(data.shape[1]) + '\n')
 
 
-# Executando codigo
+# Executing code
 
-data = createDefaultMatrix(InstanceName, InstanceID)
+data = createDefaultMatrix(InstanceName)
 
 saveMatrixFile(InstanceName, data)
+
+# Duvidas:
+# 1 - Como setar o path para que ele mostre apenas os diretorios do meu projeto?
+# 2 - Como resolver: "InstanceName" is possibly unbound?
