@@ -1,0 +1,5 @@
+
+# ignore all outputs files
+*.out
+# ignore all text files (usually used for tests)
+*.txt
