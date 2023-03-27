@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 // Armazena:
 // Vetor de inteiros
@@ -105,20 +106,26 @@ int bolha(int *vet, int tam){
  *  Como maior numero da parte desordenada sempre
  *  vai ser posto na posiçao correta, eh desneces-
  *  sario checar os valores apos ele, por isto o
- *  tam - i.
+ *  tam - i. Alem disso, ele checa se o vetor ja
+ *  esta ordenado.
  * */
 int bolhaInteligente(int *vet, int tam){
 
   int aux, counter = 0;
+  bool swaped = false;
+
   for(int i = 0; i < tam; i++){
     for(int j = 1; j < tam - i; j++){
       if(vet[j] < vet[j - 1]){
         aux = vet[j - 1];
         vet[j - 1] = vet[j];
         vet[j] = aux;
+        swaped = true;
       }
       counter++;
     }
+    if(swaped == false)
+      break;
   }
 
 

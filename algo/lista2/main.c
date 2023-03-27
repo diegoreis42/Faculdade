@@ -12,9 +12,7 @@ int main() {
     rep = leArquivo(nomeArquivo);
     if(getErro(rep) == 0)
     {
-      imprimeVet(getVet(rep), getTam(rep));
-      printf("----------------------\n");
-        cont = bolha(getVet(rep), getTam(rep));
+       cont = bolha(getVet(rep), getTam(rep));
         imprimeVet(getVet(rep), getTam(rep));
         printf("BOLHA realizou %d comparacoes.\n\n", cont);
     }
@@ -25,9 +23,7 @@ int main() {
     rep = leArquivo(nomeArquivo);
     if(getErro(rep) == 0)
     {
-      imprimeVet(getVet(rep), getTam(rep));
-      printf("----------------------\n");
-        cont = bolhaInteligente(getVet(rep), getTam(rep));
+       cont = bolhaInteligente(getVet(rep), getTam(rep));
         imprimeVet(getVet(rep), getTam(rep));
         printf("BOLHA INTELIGENTE realizou %d comparacoes.\n", cont);
     }
