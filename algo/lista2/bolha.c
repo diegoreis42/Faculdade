@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <errno.h>
 
 
 typedef struct tReturn {
@@ -21,9 +20,7 @@ int *getVet(tReturn *rep){
 }
 
 int getTam(tReturn *rep){
-  int tam = sizeof(rep->vet) / sizeof(int);
-
-  return tam;
+  return rep->tam;
 }
 
 int getErro(tReturn *rep){
@@ -40,31 +37,29 @@ void trataErro(int erro){
 }
 
 tReturn* leArquivo(char nomeArquivo[]){
-  int *aux = NULL;
   tReturn *rep = alocaReturn();
   FILE *fptr = fopen(nomeArquivo, "r");
 
-  switch (errno) {
-    
-    case ENOENT:
-      rep->erro = 1;
-      break;
-    case EILSEQ:
-      rep->erro = 2;
-      break;
-    case ENOMEM:
-      rep->erro = 3;
-      break;
-    default:
-      break;
+  if(fptr == NULL){
+    rep->erro = 1;
+    return rep;
   }
+
+  if(rep == NULL){
+    rep->erro = 3;
+    return rep;
+  }
+
 
   fscanf(fptr, "%d", &rep->tam);
   rep->vet = (int*) malloc(sizeof(int) * (rep->tam));
   
   for(int i = 0; i < (rep->tam); i++){
-    fscanf(fptr, "%d", aux);
-    rep->vet[i] = (*aux);
+    if(fscanf(fptr, "%d", &rep->vet[i]) != 1){
+        rep->erro = 2;
+        return rep;
+    }
+
   }
   return rep;
 }
