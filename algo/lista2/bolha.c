@@ -65,9 +65,41 @@ tReturn* leArquivo(char nomeArquivo[]){
 }
 
 
-int bolha(int *vet, int tam){}
+int bolha(int *vet, int tam){
+  int aux, counter = 0;
+  for(int i = 0; i < tam; i++){
+    for(int j = 1; j < tam; j++){
+      if(vet[j] < vet[j - 1]){
+        aux = vet[j - 1];
+        vet[j - 1] = vet[j];
+        vet[j] = aux;
+      }
+      counter++;
+    }
+  }
 
-int bolhaInteligente(int *vet, int tam){}
+    return counter;
+}
+
+int bolhaInteligente(int *vet, int tam){
+
+  int aux, counter = 0, n = tam;
+  for(int i = 0; i < tam; i++){
+    for(int j = 1; j < n; j++){
+      if(vet[j] < vet[j - 1]){
+        aux = vet[j - 1];
+        vet[j - 1] = vet[j];
+        vet[j] = aux;
+      }
+      counter++;
+    }
+    n--;
+  }
+
+
+return counter;
+}
+
 
 void imprimeVet(int *vet, int tam){
   for(int i = 0; i < tam; i++){
