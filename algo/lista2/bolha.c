@@ -83,9 +83,9 @@ int bolha(int *vet, int tam){
 
 int bolhaInteligente(int *vet, int tam){
 
-  int aux, counter = 0, n = tam;
+  int aux, counter = 0;
   for(int i = 0; i < tam; i++){
-    for(int j = 1; j < n; j++){
+    for(int j = 1; j < tam - i; j++){
       if(vet[j] < vet[j - 1]){
         aux = vet[j - 1];
         vet[j - 1] = vet[j];
@@ -93,7 +93,6 @@ int bolhaInteligente(int *vet, int tam){
       }
       counter++;
     }
-    n--;
   }
 
 
