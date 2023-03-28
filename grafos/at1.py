@@ -2,7 +2,7 @@ import numpy as np
 import sys
 
 
-path = '../grafos/Instancias/' 
+PATH = '../grafos/Instancias/' 
 
 
 if __name__ == "__main__":
@@ -26,7 +26,7 @@ def createDefaultMatrix(inst):
     inst (Name's Instance)
     id   (Id's Instance)
     """
-    pathFile = path + inst + '.txt'
+    pathFile = PATH + inst + '.txt'
 
     with open(pathFile, 'rb') as f:
         data = np.genfromtxt(f, dtype='int32')
@@ -56,6 +56,4 @@ data = createDefaultMatrix(InstanceName)
 
 saveMatrixFile(InstanceName, data)
 
-# Duvidas:
-# 1 - Como setar o path para que ele mostre apenas os diretorios do meu projeto?
-# 2 - Como resolver: "InstanceName" is possibly unbound?
+
