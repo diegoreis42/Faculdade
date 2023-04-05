@@ -23,6 +23,10 @@ def createDefaultMatrix(inst):
     Parameters
     -------------------
     inst (Name's Instance)
+
+    Return
+    -------------------
+    data (ndarray do arquivo lido)
     """
     PATH = '../grafos/Instancias/' 
 
