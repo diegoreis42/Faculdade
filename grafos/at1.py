@@ -2,7 +2,6 @@ import numpy as np
 import sys
 
 
-PATH = '../grafos/Instancias/' 
 
 
 if __name__ == "__main__":
@@ -24,8 +23,9 @@ def createDefaultMatrix(inst):
     Parameters
     -------------------
     inst (Name's Instance)
-    id   (Id's Instance)
     """
+    PATH = '../grafos/Instancias/' 
+
     pathFile = PATH + inst + '.txt'
 
     with open(pathFile, 'rb') as f:
@@ -50,10 +50,7 @@ def saveMatrixFile(InstanceName, data):
     file.write(InstanceName + ' ' + str(data.shape[0]) + ' ' + str(data.shape[1]) + '\n')
 
 
-# Executing code
 
-data = createDefaultMatrix(InstanceName)
 
-saveMatrixFile(InstanceName, data)
 
 

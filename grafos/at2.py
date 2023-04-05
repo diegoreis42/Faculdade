@@ -1,4 +1,5 @@
 import numpy as np
+import at1
 
 """
 Informaçoes da matriz
@@ -16,6 +17,23 @@ def verificaAdjacencia(matriz, vi, vj):
         return True
     return False
 
+def insereAresta(matriz, vi, vj):
+    try:
+        if vi == vj:
+            matriz[vi][vj] += 1
+        else:
+            matriz[vi][vj] += 1
+            matriz[vj][vi] += 1
+
+        return matriz
+    except:
+        return 'N tem esses vertices n parceir@'
 
 
 
+
+matrix = at1.createDefaultMatrix('ponte')
+
+print(verificaAdjacencia(matrix, 1, 1))
+
+print(insereAresta(matrix, 10, 10))
