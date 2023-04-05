@@ -30,10 +30,30 @@ def insereAresta(matriz, vi, vj):
         return 'N tem esses vertices n parceir@'
 
 
+# Fazer isso aqui quando estiver com internet
+def insereVertice(matriz, vi):
+    add =  np.zeros((len(matriz[0])), dtype=int)
+    matriz = np.r_[matriz, [add]]
+    add =  np.zeros((len(matriz[:0])), dtype=int)
+    matriz = np.column_stack((matriz, add))
+    
+    return matriz
+
+
+def removeAresta(matriz, vi, vj):
+    try:
+        if matriz[vi][vj] >= 1:
+            matriz[vi][vj] -= 1
+            matriz[vj][vi] -= 1
+            return matriz
+        else:
+            return 'Os vertices nao possuem arestas que os conectam'
+    except:
+        return 'Tem esse vertice n fi'
 
 
 matrix = at1.createDefaultMatrix('ponte')
 
 print(verificaAdjacencia(matrix, 1, 1))
-
 print(insereAresta(matrix, 10, 10))
+print(removeAresta(matrix, 1, 0))
