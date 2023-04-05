@@ -51,9 +51,18 @@ def removeAresta(matriz, vi, vj):
     except:
         return 'Tem esse vertice n fi'
 
+def removeVertice(matriz, vi):
+    try:
+        matriz[vi] = -1
+        # ver como muda valores coluna
+        matriz[:, vi] = -1
+        return matriz
+    except:
+        return 'Vertice nao existente'
 
 matrix = at1.createDefaultMatrix('ponte')
 
 print(verificaAdjacencia(matrix, 1, 1))
 print(insereAresta(matrix, 10, 10))
 print(removeAresta(matrix, 1, 0))
+print(removeVertice(matrix, 10))
