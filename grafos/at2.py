@@ -28,7 +28,7 @@ def tipoGrafo(matriz):
     30  - Pseudografo Simples
     31  - Pseudografo Dirigido
     """
-
+    matriz = np.array(matriz)
     # checa se o grafo eh dirigido e se eh um multigrafo
     for i in range(len(matriz[0])):
         for j in range(len(matriz[0])):
@@ -60,7 +60,7 @@ def tipoGrafo(matriz):
             return 30
         # grafo eh simples
         else:
-            return 1
+            return 0
     # grafo eh dirigido
     else:
         # checa se eh multigrafo dirigido
@@ -71,7 +71,7 @@ def tipoGrafo(matriz):
             return 31
         # grafo eh dirigido
         else:
-            return 2
+            return 1
 
 
     
@@ -90,9 +90,9 @@ def verificaAdjacencia(matriz, vi, vj):
     Boolean 
     """
     # Checa se os vertices vi e vj existem
-    if matriz.all() == -1:
+    if matriz[vi] == -1:
         return 'Vertice vi nao existe na matriz'
-    elif matriz.all() == -1:
+    elif matriz[vj] == -1:
         return 'Vertice vj nao existe na matriz'
 
     # checa existencia da adjacencia      
@@ -218,8 +218,5 @@ def removeVertice(matriz, vi):
 # Teste do codigo
 matrix = at1.createDefaultMatrix('zachary')
 
-print(tipoGrafo(matrix))
-print(verificaAdjacencia(matrix, 1, 1))
-print(insereAresta(matrix, 10, 10))
-print(removeAresta(matrix, 1, 0))
-print(removeVertice(matrix, 1))
+print(verificaAdjacencia([[0,1,0,0], [1,0,1,1], [0,1,0,1], [0,1,1,0]], 0, 3))
+print(tipoGrafo([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
