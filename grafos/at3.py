@@ -218,8 +218,8 @@ def removeVertice(matriz, vi):
 # Teste do codigo
 matrix = at1.createDefaultMatrix('zachary')
 
+print(tipoGrafo(matrix))
 print(verificaAdjacencia(matrix, 1, 1))
 print(insereAresta(matrix, 10, 10))
 print(removeAresta(matrix, 1, 0))
 print(removeVertice(matrix, 1))
-print(tipoGrafo(matrix))
