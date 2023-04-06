@@ -105,6 +105,13 @@ def calcDensidade(matriz):
     """
     Calcula densidade do grafo 
 
+    Informaçoes da matriz
+    ----------------------
+    matrizInfo[0] => 1 = Simples, 2 = Dirigido
+    matrizInfo[1] => 3 = Multigrafo, 4 = Pseudografo
+    matrizInfo[2] => |Vertices|
+    matrizInfo[3] => |Arestas|
+
     Parametros
     ---------------------
     matriz  (Matriz de adjacencia do grafo)
@@ -114,12 +121,15 @@ def calcDensidade(matriz):
     valor da densidade (entre 0 e 1)
 
     """
+    matriz = np.array(matriz)
+    tipoGrafo(matriz)
+
     # checa se o grafo eh simples
     if matrizInfo[0] == 1:
         # densidade grafo simples
-        return 2 * matrizInfo[2] / matrizInfo[3] * (matrizInfo[3] - 1)
+        return 2 * matrizInfo[3] / matrizInfo[2] * (matrizInfo[2] - 1)
     # densidade grafo direcionado
-    return matrizInfo[2] / matrizInfo[3] * (matrizInfo[3] - 1)
+    return matrizInfo[3] / matrizInfo[2] * (matrizInfo[2] - 1)
 
 
 def insereAresta(matriz, vi, vj):
@@ -152,12 +162,10 @@ def insereAresta(matriz, vi, vj):
 
 
 # Fazer isso aqui quando estiver com internet
-def insereVertice(matriz, vi):
-    add =  np.zeros((len(matriz[0])), dtype=int)
-    matriz = np.r_[matriz, [add]]
-    add =  np.zeros((len(matriz[:0])), dtype=int)
-    matriz = np.column_stack((matriz, add))
-    
+def insereVertice(matriz):
+   
+    matriz = np.column_stack((matriz, np.zeros(len(matriz[0]))))
+    matriz = np.row_stack((matriz, np.zeros(len(matriz[0]))))
     return matriz
 
 
@@ -220,3 +228,5 @@ matrix = at1.createDefaultMatrix('zachary')
 
 print(verificaAdjacencia([[0,1,0,0], [1,0,1,1], [0,1,0,1], [0,1,1,0]], 0, 3))
 print(tipoGrafo([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
+print(calcDensidade([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
+print(insereVertice([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
