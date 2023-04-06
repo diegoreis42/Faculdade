@@ -124,14 +124,17 @@ def calcDensidade(matriz):
     """
     matriz = np.array(matriz)
     tipoGrafo(matriz)
+    print(matrizInfo)
 
     # checa se o grafo eh simples
     if matrizInfo[0] == 1:
         # densidade grafo simples
-        return 2 * matrizInfo[3] / matrizInfo[2] * (matrizInfo[2] - 1)
-    # densidade grafo direcionado
-    return matrizInfo[3] / matrizInfo[2] * (matrizInfo[2] - 1)
-
+        densidade = (2 * matrizInfo[3]) / (matrizInfo[2] * (matrizInfo[2] - 1))
+    else:
+        # densidade grafo direcionado
+        densidade = matrizInfo[3] / (matrizInfo[2] * (matrizInfo[2] - 1))
+    
+    return densidade
 
 def insereAresta(matriz, vi, vj):
     """
@@ -234,7 +237,9 @@ matrix = at1.createDefaultMatrix('zachary')
 
 print(verificaAdjacencia([[0,1,0,0], [1,0,1,1], [0,1,0,1], [0,1,1,0]], 0, 3))
 print(tipoGrafo([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
-print(calcDensidade([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
+
+print('%.3f' % calcDensidade([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
+
 print(insereVertice([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
 print(removeVertice([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]], 2))
 print(removeAresta([[0, 1,0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]], 1, 0))
