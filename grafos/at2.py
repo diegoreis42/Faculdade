@@ -89,10 +89,11 @@ def verificaAdjacencia(matriz, vi, vj):
     ---------------------
     Boolean 
     """
+    matriz = np.array(matriz)
     # Checa se os vertices vi e vj existem
-    if matriz[vi] == -1:
+    if matriz.all() == -1:
         return 'Vertice vi nao existe na matriz'
-    elif matriz[vj] == -1:
+    elif matriz.all() == -1:
         return 'Vertice vj nao existe na matriz'
 
     # checa existencia da adjacencia      
@@ -149,6 +150,7 @@ def insereAresta(matriz, vi, vj):
         'N tem esses vertices n parceir@' caso pelo menos um dos vertices nao existe
     
     """
+    matriz = np.array(matriz)
     try:
         if vi == vj:
             matriz[vi][vj] += 1
@@ -163,9 +165,11 @@ def insereAresta(matriz, vi, vj):
 
 # Fazer isso aqui quando estiver com internet
 def insereVertice(matriz):
+    matriz = np.array(matriz)
    
     matriz = np.column_stack((matriz, np.zeros(len(matriz[0]))))
     matriz = np.row_stack((matriz, np.zeros(len(matriz[0]))))
+
     return matriz
 
 
@@ -186,6 +190,7 @@ def removeAresta(matriz, vi, vj):
         'Os vertices nao possuem arestas que os conectam' 
         'Tem esse vertice n fi' (caso o vertice nao exista na matriz)
     """
+    matriz = np.array(matriz)
     try:
         if matriz[vi][vj] >= 1:
             matriz[vi][vj] -= 1
@@ -213,6 +218,7 @@ def removeVertice(matriz, vi):
     Erro:
         'Vertice nao existe na matriz'
     """
+    matriz = np.array(matriz)
     try:
         matriz[vi] = -1
         # ver como muda valores coluna
@@ -230,3 +236,5 @@ print(verificaAdjacencia([[0,1,0,0], [1,0,1,1], [0,1,0,1], [0,1,1,0]], 0, 3))
 print(tipoGrafo([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
 print(calcDensidade([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
 print(insereVertice([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]]))
+print(removeVertice([[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]], 2))
+print(removeAresta([[0, 1,0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]], 1, 0))
