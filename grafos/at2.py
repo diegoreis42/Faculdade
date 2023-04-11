@@ -44,9 +44,12 @@ def tipoGrafo(matriz):
         matrizInfo[1] = 4
 
     # calcula quantidade de arestas pelo handshke's theorem
-    matrizInfo[2] = matriz.sum() / 2
+    if matrizInfo[0] == 1:
+        matrizInfo[2] = matriz.sum() / 2
+    else:
+        matrizInfo[2] = matriz.sum()
 
-    # calcula quantidade de arestas pelo tamanho da matriz
+    # calcula quantidade de vertices pelo tamanho da matriz
     matrizInfo[3] = len(matriz[0])
     
 
@@ -58,7 +61,7 @@ def tipoGrafo(matriz):
         # checa se eh Pseudografo simples
         elif matrizInfo[1] == 4:
             return 30
-        # grafo eh simples
+        # grafo eh apenas simples
         else:
             return 0
     # grafo eh dirigido
@@ -91,9 +94,9 @@ def verificaAdjacencia(matriz, vi, vj):
     """
     matriz = np.array(matriz)
     # Checa se os vertices vi e vj existem
-    if matriz.all() == -1:
+    if matriz[vi].all() == -1:
         return 'Vertice vi nao existe na matriz'
-    elif matriz.all() == -1:
+    elif matriz[vj].all() == -1:
         return 'Vertice vj nao existe na matriz'
 
     # checa existencia da adjacencia      
