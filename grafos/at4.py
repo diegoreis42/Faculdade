@@ -50,7 +50,6 @@ def caminhoEuleriano(g):
     total, i = 0, 0
     while (total <= 2) and (i < n):
         grau = g[i].sum()
-        print(grau)
         if grau % 2 != 0:
             total += 1
         i += 1
